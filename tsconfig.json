@@ -1,0 +1,12 @@
+{
+  "files": [
+    "main.ts",
+    "week-1/index.ts"
+  ],
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2015"
+  }
+}
