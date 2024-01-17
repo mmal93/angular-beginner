@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { switchMap } from 'rxjs';
-import {ActivatedRoute, RouterModule} from '@angular/router';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { BooksService } from '../../books.service';
 import IBook from '../../models/book';
 
@@ -12,7 +9,18 @@ import IBook from '../../models/book';
   styleUrls: ['./book-detail.component.scss']
 })
 export class BookDetailComponent {
-  book: any;
+  book: IBook = {
+    id: 0,
+    image: '',
+    name: '',
+    author: '',
+    price: 0,
+    quantity: 0,
+    description: '',
+    type: '',
+    publish_year: 0,
+    rate: 0
+  };
   private route;
   private booksServices: BooksService;
   constructor(route: ActivatedRoute, booksService: BooksService) {
@@ -28,8 +36,6 @@ export class BookDetailComponent {
       bookResult = res.filter((book: IBook) => book.id === id);
       if (bookResult.length > 0) {
         this.book = bookResult[0];
-      } else {
-        this.book = false;
       }
     });
   }

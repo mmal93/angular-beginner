@@ -1,8 +1,54 @@
-<ul>
-    <li>
-        <a routerLink="/" routerLinkActive="active">Book Listing</a>
-    </li>
-    <li>
-        <a routerLink="/login" routerLinkActive="active">Login</a>
-    </li>
-</ul>
+<div class="uk-navbar-container tm-navbar-container uk-sticky uk-active uk-sticky-below uk-sticky-fixed" uk-sticky="media: 960; " style="position: fixed !important; width: 1903px !important; margin-top: 0px !important; top: 0px;">
+    <div class="uk-container uk-container-expand">
+        <nav class="uk-navbar" uk-navbar="">
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="/" aria-label="Back to Home">
+                    <img src="../../../../assets/images/logo.png" class="uk-margin-small-right" width="28" height="34" alt="Logo">AnhMok </a>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav uk-visible@m">
+                    <li>
+                        <a routerLink="/" routerLinkActive="uk-active">Book Listing</a>
+                    </li>
+                </ul>
+                <a class="uk-navbar-toggle uk-hidden@m uk-icon uk-navbar-toggle-icon" uk-navbar-toggle-icon="" href="#offcanvas" uk-toggle="" aria-label="Open menu" role="button">
+                    <svg width="20" height="20" viewBox="0 0 20 20">
+                        <rect class="line-1" y="3" width="20" height="2"></rect>
+                        <rect class="line-2" y="9" width="20" height="2"></rect>
+                        <rect class="line-3" y="9" width="20" height="2"></rect>
+                        <rect class="line-4" y="15" width="20" height="2"></rect>
+                    </svg>
+                </a>
+                <div class="uk-inline" type="button">
+                    <button class="uk-button uk-button-default" type="button" uk-icon="icon: cart"></button>
+                    <div uk-dropdown>
+
+                    </div>
+                </div>
+                <div clas="uk-inline">
+                    <button class="uk-button uk-button-default" type="button" uk-icon="icon: user"></button>
+                    <div uk-dropdown>
+                        <ul class="uk-dropdown-nav">
+                            <li class="uk-margin-small" *ngIf="!isLoggedIn">
+                                <a class="uk-button uk-button-primary uk-width-1-1" routerLink="/login" routerLinkActive="uk-active">Login</a>
+                            </li>
+                            <li class="uk-margin-small" *ngIf="isLoggedIn" routerLinkActive="uk-active">
+                                <button class="uk-button uk-button-danger uk-width-1-1" type="button" (click)="logOut()">Logout</button>
+                            </li>
+                            <li class="uk-margin-small" *ngIf="isLoggedIn">
+                                <button class="uk-button uk-button-primary uk-width-1-1" routerLink="/admin" routerLinkActive="uk-active">Admin</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div id="offcanvas" uk-offcanvas="mode: push; overlay: true" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar" role="dialog" aria-modal="true">
+        <div class="uk-panel">
+            
+        </div>
+    </div>
+</div>

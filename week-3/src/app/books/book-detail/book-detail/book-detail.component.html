@@ -1,5 +1,5 @@
-<div>
-    <p><img src="./assets/images/books/{{book.image}}"></p>
+<div *ngIf="book.id" class="uk-container uk-container-expand uk-margin-large-top uk-margin-large-bottom">
+    <p><img [src]="'./assets/images/books/' + book.image " [alt]=" book.name "></p>
     <h1>{{ book.name }}</h1>
     <p>Author: {{ book.author }}</p>
     <p>Price: {{ book.price }}</p>
