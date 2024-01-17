@@ -1,0 +1,10 @@
+<h1>Book List</h1>
+<ul>
+    <li *ngFor="let book of bookList">
+        <a routerLink="/books/{{book.id}}" routerLinkActive="active"><img src="./assets/images/books/{{book.image}}"></a>
+        <h3><a routerLink="/books/{{book.id}}" routerLinkActive="active">{{ book.name }}</a></h3>
+        <p>{{ book.author }}</p>
+        <p>{{ book.price }}</p>
+        <p>{{ book.quantity }}</p>
+    </li>
+</ul>
