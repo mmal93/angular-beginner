@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BooksService } from '../../books.service';
 import IBook from '../../models/book';
@@ -8,7 +8,7 @@ import IBook from '../../models/book';
   templateUrl: './book-detail.component.html',
   styleUrls: ['./book-detail.component.scss']
 })
-export class BookDetailComponent {
+export class BookDetailComponent implements OnInit {
   book: IBook = {
     id: 0,
     image: '',
@@ -23,20 +23,15 @@ export class BookDetailComponent {
   };
   private route;
   private booksServices: BooksService;
+
   constructor(route: ActivatedRoute, booksService: BooksService) {
     this.route = route;
     this.booksServices = booksService;
-    this.findBookByID(parseInt(this.route.snapshot.params['id']));
   }
 
-  public findBookByID(id: number): void {
-    let bookData: IBook[];
-    let bookResult: IBook[];
-    this.booksServices.getJsonData().subscribe((res: any)=> {
-      bookResult = res.filter((book: IBook) => book.id === id);
-      if (bookResult.length > 0) {
-        this.book = bookResult[0];
-      }
+  ngOnInit(): void {
+    this.booksServices.getBook(parseInt(this.route.snapshot.params['id'])).subscribe((book: IBook) => {
+      this.book = book;
     });
   }
 }
